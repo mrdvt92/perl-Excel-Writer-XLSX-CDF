@@ -14,4 +14,17 @@ WriteMakefile(
                       },
     ABSTRACT_FROM  => 'lib/Excel/Writer/XLSX/CDF.pm',
     AUTHOR         => 'Michael R. Davis <mdavis@localdomain>',
+    META_MERGE     => {
+                       'meta-spec' => { 'version' => 2 },
+                       'resources' => {
+                                       repository => {
+                                                      web  => 'https://github.com/mrdvt92/perl-Excel-Writer-XLSX-CDF.git',
+                                                      url  => 'git@github.com:mrdvt92/perl-Excel-Writer-XLSX-CDF.git',
+                                                      type => 'git',
+                                                     },
+                                       homepage   => 'https://github.com/mrdvt92/perl-Excel-Writer-XLSX-CDF',
+                                       bugtracker => {web => 'https://github.com/mrdvt92/perl-Excel-Writer-XLSX-CDF/issues' },
+                                      },
+                      },
+
 );
