@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use List::MoreUtils qw{first_index};
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 NAME
 
@@ -39,7 +39,7 @@ Generates Excel Document with Continuous Distribution Function Chart from the su
   my $writer    = Excel::Writer::XLSX::CDF->new(
                                            chart_title      => "Continuous Distribution Function (CDF)",
                                            chart_y_label    => "Distribution",
-                                           chart_x_label    => "", 
+                                           chart_x_label    => "",
                                            group_names_sort => 0,  #default 0 is in order of appearance in data
                                           );
 
@@ -178,7 +178,7 @@ sub generate {
   if ($self->group_names_sort) {
     @groups = sort @groups;
   }
- 
+
   #Open string scalar reference as file handle for Excel::Writer::XLSX to write to
   open my $fh, '>', \my $content or die("Error: Filehandle open error: $!");
 
@@ -288,7 +288,7 @@ sub generate_file {
   my $self            = shift;
   my $ymd             = DateTime->now->ymd;
   my ($fh, $filename) = File::Temp::tempfile("excel-cdf-$ymd-XXXXXX", SUFFIX => ".xlsx", DIR => File::Temp::tempdir());
-  binmode($fh); 
+  binmode($fh);
   my $blob            = $self->generate(@_);
   print $fh $blob;
   close($fh);

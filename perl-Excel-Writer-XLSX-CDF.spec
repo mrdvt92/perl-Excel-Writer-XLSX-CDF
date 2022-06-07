@@ -1,5 +1,5 @@
 Name:           perl-Excel-Writer-XLSX-CDF
-Version:        0.01
+Version:        0.02
 Release:        1%{?dist}
 Summary:        Generates Excel Document with Continuous Distribution Function Chart
 License:        MIT
