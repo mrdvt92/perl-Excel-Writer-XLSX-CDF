@@ -1,6 +1,9 @@
 Revision history for Perl extension Excel::Writer::XLSX::CDF.
 
-0.02 2002-06-07
+0.03 2022-06-09
+  - Updates to cleanup CPAN distribution
+
+0.02 2022-06-07
   - Added GitHub mete merge information
   - Cleaned up documentation
   - Cleaned up Boolean properties

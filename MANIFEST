@@ -4,5 +4,6 @@ MANIFEST
 README.md
 LICENSE
 t/001_load.t
+t/002_generate.t
 lib/Excel/Writer/XLSX/CDF.pm
 perl-Excel-Writer-XLSX-CDF.spec
