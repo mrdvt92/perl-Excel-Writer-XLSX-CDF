@@ -33,7 +33,9 @@ Generates Excel Document with Continuous Distribution Function Chart from the su
                                              chart_title      => "Continuous Distribution Function (CDF)",
                                              chart_y_label    => "Probability",
                                              chart_x_label    => "",
-                                             group_names_sort => 0,  #default 0 is in order of appearance in data
+                                             chart_x_min      => "auto", #defalut: undef => calculated by this package
+                                             chart_x_max      => "auto", #default: undef => calculated by this package
+                                             group_names_sort => 0,      #default: 0     => order of appearance in data
                                             );
 
 # PROPERTIES
@@ -52,9 +54,27 @@ Default: Probability
 
 ## chart\_x\_label
 
-Set and returns the X axis label of the Excel chart
+Set and returns the X axis max value of the Excel chart
 
 Default: ""
+
+## chart\_x\_max
+
+Set and returns the X axis min value of the Excel chart
+
+Default: undef = calculate (currently max of all 90% or first 50% crossing)
+
+    "auto" - set to auto in Excel
+    number - set set_x_axis max to number
+
+## chart\_x\_min
+
+Set and returns the X axis label of the Excel chart
+
+Default: undef = calculate (currently using auto)
+
+    "auto" - set to auto in Excel
+    number - set set_x_axis max to number
 
 ## chart\_legend\_display
 
