@@ -54,13 +54,13 @@ Default: Probability
 
 ## chart\_x\_label
 
-Set and returns the X axis max value of the Excel chart
+Set and returns the X axis label of the Excel chart
 
 Default: ""
 
 ## chart\_x\_max
 
-Set and returns the X axis min value of the Excel chart
+Set and returns the X axis max value of the Excel chart
 
 Default: undef = calculate (currently max of all 90% or first 50% crossing)
 
@@ -69,7 +69,7 @@ Default: undef = calculate (currently max of all 90% or first 50% crossing)
 
 ## chart\_x\_min
 
-Set and returns the X axis label of the Excel chart
+Set and returns the X axis min value of the Excel chart
 
 Default: undef = calculate (currently using auto)
 

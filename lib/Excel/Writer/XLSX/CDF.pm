@@ -89,7 +89,7 @@ sub chart_y_label {
 
 =head2 chart_x_label
 
-Set and returns the X axis max value of the Excel chart
+Set and returns the X axis label of the Excel chart
 
 Default: ""
 
@@ -104,7 +104,7 @@ sub chart_x_label {
 
 =head2 chart_x_max
 
-Set and returns the X axis min value of the Excel chart
+Set and returns the X axis max value of the Excel chart
 
 Default: undef = calculate (currently max of all 90% or first 50% crossing)
 
@@ -122,7 +122,7 @@ sub chart_x_max {
 
 =head2 chart_x_min
 
-Set and returns the X axis label of the Excel chart
+Set and returns the X axis min value of the Excel chart
 
 Default: undef = calculate (currently using auto)
 
