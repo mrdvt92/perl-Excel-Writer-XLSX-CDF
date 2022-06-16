@@ -10,7 +10,7 @@ Excel::Writer::XLSX::CDF - Generates Excel Document with Continuous Distribution
                                                  group_names_sort => 1,
                                                 );
     my @data     = (
-                    [group_name_A => 0.11], #group name is used to lable the chart series
+                    [group_name_A => 0.11], #group name is used to label the chart series
                     [group_name_A => 0.21],
                     [group_name_A => 0.31],
                     [group_name_A => 0.41],
