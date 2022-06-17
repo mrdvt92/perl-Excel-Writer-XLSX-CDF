@@ -61,12 +61,14 @@ sub new {
 
 Set and returns the title of the Excel chart
 
+  $writer->chart_title("My Chart Title");
+
 Default: Continuous Distribution Function (CDF)
 
 =cut
 
 sub chart_title {
-  my $self         = shift;
+  my $self               = shift;
   $self->{'chart_title'} = shift if @_;
   $self->{'chart_title'} = 'Continuous Distribution Function (CDF)' unless defined $self->{'chart_title'};
   return $self->{'chart_title'};
@@ -76,12 +78,14 @@ sub chart_title {
 
 Set and returns the Y axis label of the Excel chart
 
+  $writer->chart_y_label("Y Axis Label");
+
 Default: Probability
 
 =cut
 
 sub chart_y_label {
-  my $self           = shift;
+  my $self                 = shift;
   $self->{'chart_y_label'} = shift if @_;
   $self->{'chart_y_label'} = 'Probability' unless defined $self->{'chart_y_label'};
   return $self->{'chart_y_label'};
@@ -91,12 +95,14 @@ sub chart_y_label {
 
 Set and returns the X axis label of the Excel chart
 
+  $writer->chart_x_label("X Axis Label");
+
 Default: ""
 
 =cut
 
 sub chart_x_label {
-  my $self           = shift;
+  my $self                 = shift;
   $self->{'chart_x_label'} = shift if @_;
   $self->{'chart_x_label'} = '' unless defined $self->{'chart_x_label'};
   return $self->{'chart_x_label'};
@@ -106,15 +112,16 @@ sub chart_x_label {
 
 Set and returns the X axis max value of the Excel chart
 
-Default: undef = calculate (currently max of all 90% or first 50% crossing)
+  $writer->chart_x_max(undef);  #calculated by this package
+  $writer->chart_x_max(123);    #set set_x_axis max to number
+  $writer->chart_x_max("auto"); #set to auto for Excel to estimate
 
-  "auto" - set to auto in Excel
-  number - set set_x_axis max to number
+Default: undef
 
 =cut
 
 sub chart_x_max {
-  my $self           = shift;
+  my $self               = shift;
   $self->{'chart_x_max'} = shift if @_;
   $self->{'chart_x_max'} = undef unless exists $self->{'chart_x_max'};
   return $self->{'chart_x_max'};
@@ -124,15 +131,16 @@ sub chart_x_max {
 
 Set and returns the X axis min value of the Excel chart
 
-Default: undef = calculate (currently using auto)
+  $writer->chart_x_min(undef);  #calculated by this package
+  $writer->chart_x_min(123);    #set set_x_axis min to number
+  $writer->chart_x_min("auto"); #set to auto for Excel to estimate
 
-  "auto" - set to auto in Excel
-  number - set set_x_axis max to number
+Default: undef
 
 =cut
 
 sub chart_x_min {
-  my $self           = shift;
+  my $self               = shift;
   $self->{'chart_x_min'} = shift if @_;
   $self->{'chart_x_min'} = undef unless exists $self->{'chart_x_min'};
   return $self->{'chart_x_min'};
@@ -142,12 +150,14 @@ sub chart_x_min {
 
 Set and returns the legend display property for the Excel chart
 
+  $writer->chart_legend_display(0);
+
 Default: 1
 
 =cut
 
 sub chart_legend_display {
-  my $self           = shift;
+  my $self                        = shift;
   $self->{'chart_legend_display'} = shift if @_;
   $self->{'chart_legend_display'} = 1 unless defined $self->{'chart_legend_display'};
   return $self->{'chart_legend_display'};
@@ -157,17 +167,20 @@ sub chart_legend_display {
 
 Set and returns an array reference of Excel color codes to use for each CDF in group order.  The default color once all colors are used is black.
 
+  $writer->chart_colors([]); #set to all black
+  $writer->chart_colors([reverse map {"#$_$_$_$_$_$_"} 1 .. 9, 'A' .. 'E']); #gray scale
+
 Default: ['#FF0000', '#800000', '#FFFF00', '#808000', '#00FF00', '#008000', '#00FFFF', '#008080', '#0000FF', '#000080', '#FF00FF', '#800080']
 
 =cut
 
 sub chart_colors {
-  my $self          = shift;
+  my $self                = shift;
   $self->{'chart_colors'} = shift if @_;
   $self->{'chart_colors'} = ['#FF0000', '#800000', '#FFFF00', '#808000',
-                       '#00FF00', '#008000', '#00FFFF', '#008080',
-                       '#0000FF', '#000080', '#FF00FF', '#800080'] unless $self->{'chart_colors'};
-  die('Error: chart_colors property must be and array reference') unless ref($self->{'chart_colors'}) eq 'ARRAY';
+                             '#00FF00', '#008000', '#00FFFF', '#008080',
+                             '#0000FF', '#000080', '#FF00FF', '#800080'] unless $self->{'chart_colors'};
+  die('Error: chart_colors property must be an array reference') unless ref($self->{'chart_colors'}) eq 'ARRAY';
   return $self->{'chart_colors'};
 }
 
@@ -175,12 +188,14 @@ sub chart_colors {
 
 Set and returns the alphabetical sort option for the group names.  A true value Perl-wise will sort the group names before generating the Excel Workbook and a false value will use the order in which the groups were discovered in the data to generate the group names order.
 
+  $writer->group_names_sort(1);
+
 Default: 0
 
 =cut
 
 sub group_names_sort {
-  my $self           = shift;
+  my $self                    = shift;
   $self->{'group_names_sort'} = shift if @_;
   $self->{'group_names_sort'} = 0 unless defined $self->{'group_names_sort'};
   return $self->{'group_names_sort'};

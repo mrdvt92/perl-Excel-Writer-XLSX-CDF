@@ -44,11 +44,15 @@ Generates Excel Document with Continuous Distribution Function Chart from the su
 
 Set and returns the title of the Excel chart
 
+    $writer->chart_title("My Chart Title");
+
 Default: Continuous Distribution Function (CDF)
 
 ## chart\_y\_label
 
 Set and returns the Y axis label of the Excel chart
+
+    $writer->chart_y_label("Y Axis Label");
 
 Default: Probability
 
@@ -56,29 +60,35 @@ Default: Probability
 
 Set and returns the X axis label of the Excel chart
 
+    $writer->chart_x_label("X Axis Label");
+
 Default: ""
 
 ## chart\_x\_max
 
 Set and returns the X axis max value of the Excel chart
 
-Default: undef = calculate (currently max of all 90% or first 50% crossing)
+    $writer->chart_x_max(undef);  #calculated by this package
+    $writer->chart_x_max(123);    #set set_x_axis max to number
+    $writer->chart_x_max("auto"); #set to auto for Excel to estimate
 
-    "auto" - set to auto in Excel
-    number - set set_x_axis max to number
+Default: undef
 
 ## chart\_x\_min
 
 Set and returns the X axis min value of the Excel chart
 
-Default: undef = calculate (currently using auto)
+    $writer->chart_x_min(undef);  #calculated by this package
+    $writer->chart_x_min(123);    #set set_x_axis min to number
+    $writer->chart_x_min("auto"); #set to auto for Excel to estimate
 
-    "auto" - set to auto in Excel
-    number - set set_x_axis max to number
+Default: undef
 
 ## chart\_legend\_display
 
 Set and returns the legend display property for the Excel chart
+
+    $writer->chart_legend_display(0);
 
 Default: 1
 
@@ -86,11 +96,16 @@ Default: 1
 
 Set and returns an array reference of Excel color codes to use for each CDF in group order.  The default color once all colors are used is black.
 
+    $writer->chart_colors([]); #set to all black
+    $writer->chart_colors([reverse map {"#$_$_$_$_$_$_"} 1 .. 9, 'A' .. 'E']); #gray scale
+
 Default: \['#FF0000', '#800000', '#FFFF00', '#808000', '#00FF00', '#008000', '#00FFFF', '#008080', '#0000FF', '#000080', '#FF00FF', '#800080'\]
 
 ## group\_names\_sort
 
 Set and returns the alphabetical sort option for the group names.  A true value Perl-wise will sort the group names before generating the Excel Workbook and a false value will use the order in which the groups were discovered in the data to generate the group names order.
+
+    $writer->group_names_sort(1);
 
 Default: 0
 
